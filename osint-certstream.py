@@ -12,6 +12,8 @@ import argparse
 
 
 keywords = []
+out_filename = "certstream.log"
+
 logging.basicConfig(
     format='[%(levelname)s:%(name)s] %(asctime)s - %(message)s', level=logging.INFO)
 
@@ -35,6 +37,10 @@ def certstream_callback(message, context):
             sys.stdout.write(u"[{}] {} {} \n".format(datetime.datetime.now().strftime(
                 '%m/%d/%y %H:%M:%S'), domain, ','.join(domains)))
             sys.stdout.flush()
+            
+            out_file = open(out_filename, 'a')
+            out_file.write(u"{}\n".format(','.join(domains)))
+            out_file.flush()
 
 
 def main(filename):
