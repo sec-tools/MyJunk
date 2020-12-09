@@ -42,7 +42,7 @@ def main(filename):
     print('[+] Found {0} keywords to use..'.format(len(keywords)))
     print('[+] Searching Certstream for {0}..'.format(','.join(keywords)))
     certstream.listen_for_events(
-        certstream_callback, url='wss://certstream.calidog.io/')
+        certstream_callback, 'wss://certstream.calidog.io/')
 
 
 if __name__ == '__main__':
